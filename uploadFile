@@ -1,0 +1,58 @@
+
+import org.springframework.web.multipart.MultipartFile;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+/**
+ * 图片上传的工具类
+ * @author mly
+ * @version 1.0
+ */
+public class UploadImg {
+
+    public Map<String,Object> uploadPicture(MultipartFile file, HttpServletRequest request, HttpServletResponse response){
+        Map<String,Object> map = new HashMap<>();
+        File targetFile = null;
+        //反回存储的路径
+        String url = "";
+        //获取文件名加后缀
+        String fileName = file.getOriginalFilename();
+        if(fileName !=null && fileName !=""){
+            //存储的路径
+            String returnUrl = request.getScheme() +"://"+request.getServerName() +":"+ request.getServerPort()+ request.getContextPath();
+            //文件存储位置
+            String path = request.getServletContext().getRealPath("/");
+            //文件后缀
+            String fileF = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+            //新文件名
+            fileName = new SimpleDateFormat("_yyyyMMddHHmmss").format(new Date())+"_" +new Random().nextInt(1000)+fileF;
+            //判断当前的文件是否存在
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            String fileAdd = sdf.format(new Date());
+            //获取文件后缀
+            File file1 = new File(path+"/"+fileAdd);
+            //如果当前的文件夹不存在则创建
+            if(!file1.exists() && !file1.isDirectory()){
+                file1.mkdir();
+            }
+            //将图片存入到文件夹
+            targetFile = new File(file1,fileName);
+            try{
+                //将上传的文件写到服务器上指定的文件
+                file.transferTo(targetFile);
+                url = returnUrl+"/"+fileAdd+"/"+fileName;
+                map.put("url",url);
+            }catch (Exception e){
+                e.printStackTrace();
+                System.out.println("上传失败");
+            }
+        }
+        return map;
+    }
+}
