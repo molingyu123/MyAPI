@@ -7,6 +7,8 @@ import java.io.IOException;
 
 /**
  * 数据的追加和换行写
+ * FileOutputStream(String name,boolean append) 创建一个向具有指定name 的文件中写入数据的输出文件流
+ * FIleOutputStream(File file ,boolean append) 创建一个指定File 对表示的文件中写入数据的文件输出流
  */
 public class Demo03 {
     public static void main(String[] args) throws IOException {
@@ -30,7 +32,6 @@ public class Demo03 {
         for(int i=0;i<10;i++){
             fileOutputStream.write("你好".getBytes());
             fileOutputStream.write("\r\n".getBytes());
-
         }
         fileOutputStream.close();
     }
