@@ -5,3 +5,8 @@ f=123
 e=123
 d=123
 c=123
+文件路径：
+  C:\Users\mly\Pictures\a6.gif
+
+服务器路径：
+  C:\Users\mly\Pictures\server
