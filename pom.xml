@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>net</module>
+        <module>exceptionAndThread</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
