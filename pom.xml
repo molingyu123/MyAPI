@@ -6,6 +6,8 @@
     <modules>
         <module>net</module>
         <module>exceptionAndThread</module>
+        <module>newJdk8</module>
+        <module>spring</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
