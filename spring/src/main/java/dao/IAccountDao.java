@@ -1,7 +1,7 @@
 package dao;
 
 /**
- * Dao 层几口
+ * Dao 层接口口
  */
 public interface IAccountDao {
     void saveAccount();

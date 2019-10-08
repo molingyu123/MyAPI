@@ -5,9 +5,5 @@ package service;
  */
 public interface IAccountService {
 
-    /**
-     *
-     * @param name
-     */
     void saveAccount();
 }
