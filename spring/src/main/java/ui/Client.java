@@ -10,7 +10,11 @@ import service.impl.IAccountServiceImpl;
 public class Client {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
 //        IAccountService accountService = new IAccountServiceImpl();
-        IAccountService accountService = (IAccountService) BeanFactory.getBean("accountService");
-        accountService.saveAccount();
+        for(int i=0;i<5;i++){
+            IAccountService accountService = (IAccountService) BeanFactory.getBean("accountService");
+            accountService.saveAccount();
+            System.out.println(accountService);
+        }
+
     }
 }
